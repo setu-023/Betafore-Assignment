@@ -21,3 +21,16 @@ class User(AbstractUser):
             self.otp = (random.randint(1,999999))
             print(self.otp)
         super().save(*args, **kwargs)
+
+
+class Friend(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    friend_list = models.JSONField(null=True, blank=True)
+    friend_request = models.JSONField(null=True, blank=True)
+    sent_friend_request = models.JSONField(null=True, blank=True)
+
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+

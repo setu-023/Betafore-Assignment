@@ -1,6 +1,3 @@
-import email
-from django.conf import settings
-
 from rest_framework.exceptions import MethodNotAllowed
 from rest_framework.generics import ListCreateAPIView, CreateAPIView
 from rest_framework import permissions, status
