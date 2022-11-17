@@ -15,13 +15,19 @@ class LikeListCreateAPIView(APIView):
     permission_classes = [permissions.IsAuthenticated,]
 
     def post(self, request):
-        
-        serializer = LikeSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({ 'message': 'like created', 'data':serializer.data}, status.HTTP_201_CREATED,)
-        else:
-            return Response({'message': 'something went wrong', 'data': serializer.errors}, status.HTTP_200_OK,)
+        try:
+            like = Like.objects.get(post=request.data['post'], liked_by=User.objects.get(email=request.user).id)
+            like.delete()
+            return Response({ 'message': 'like has been removed', 'data':[]}, status.HTTP_200_OK,)
+
+        except:
+            request.data['liked_by'] = User.objects.get(email=request.user).id
+            serializer = LikeSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({ 'message': 'like created', 'data':serializer.data}, status.HTTP_201_CREATED,)
+            else:
+                return Response({'message': 'something went wrong', 'data': serializer.errors}, status.HTTP_200_OK,)
 
 
     def get(self, request):

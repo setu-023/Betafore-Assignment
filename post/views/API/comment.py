@@ -16,12 +16,13 @@ class CommentListCreateAPIView(APIView):
 
     def post(self, request):
         
+        request.data['comment_by'] = User.objects.get(email=request.user).id
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({ 'message': 'comment created', 'data':serializer.data}, status.HTTP_201_CREATED,)
         else:
-            return Response({'message': 'something went wrong', 'data': serializer.errors}, status.HTTP_200_OK,)
+            return Response({'message': 'something went wrong', 'data': serializer.errors}, status.HTTP_405_METHOD_NOT_ALLOWED,)
 
 
     def get(self, request):
