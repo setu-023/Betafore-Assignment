@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "80b6d826-a2c7-421f-900d-ca814023d775",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6499422"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json()",
+							"var token = response['data']['access']",
+							"console.log(response)",
+							"pm.globals.set(\"token\", token);",
+							"pm.environment.set(\"token\", token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"setu@mail.com\",\n    \"password\": \"as\",\n    \"otp\": 596444\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/accounts/login/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"login",
+						""
+					]
+				},
+				"description": "_Required Fields: email, password, otp_"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"sena@mail.com\",\n    \"password\": \"asasasdd\",\n    \"otp\": 990499\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 15 Nov 2022 13:03:51 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "519"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"login successfully\",\n    \"data\": {\n        \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODYwMzgzMSwiaWF0IjoxNjY4NTE3NDMxLCJqdGkiOiJkMzJhMmUxMGI5YTE0YWUyYjAzNzFiMDg4MGI4ZmFhYSIsInVzZXJfaWQiOjR9.NACjnj_Zf6Wn8wIrSrhfXFQrdhX8eB3XzAFx-MuiT4c\",\n        \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4NTE3NzMxLCJpYXQiOjE2Njg1MTc0MzEsImp0aSI6IjNlZmM1NDJjMGM0NTQwNjZiY2I5ZWVkNWVhMDU5MmJjIiwidXNlcl9pZCI6NH0.T67VZa4bD-_nAS9Da_SBiofZXGrIGcTo8rWbuQVQT9M\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sena@mail.com\",\n    \"password\": \"asasasdd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/accounts/register/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"register",
+						""
+					]
+				},
+				"description": "**user registration api**"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"sena@mail.com\",\n    \"password\": \"asasasdd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"register",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 15 Nov 2022 13:03:21 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "249"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 4,\n    \"last_login\": null,\n    \"is_superuser\": false,\n    \"is_staff\": false,\n    \"is_active\": true,\n    \"date_joined\": \"2022-11-15T13:03:21.575167Z\",\n    \"first_name\": null,\n    \"last_name\": null,\n    \"username\": null,\n    \"email\": \"sena@mail.com\",\n    \"otp\": \"990499\",\n    \"groups\": [],\n    \"user_permissions\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json()",
+							"var token = response['data']",
+							"console.log(response)",
+							"pm.globals.set(\"token\", token);",
+							"pm.environment.set(\"token\", token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODYwMzgzMSwiaWF0IjoxNjY4NTE3NDMxLCJqdGkiOiJkMzJhMmUxMGI5YTE0YWUyYjAzNzFiMDg4MGI4ZmFhYSIsInVzZXJfaWQiOjR9.NACjnj_Zf6Wn8wIrSrhfXFQrdhX8eB3XzAFx-MuiT4c\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/accounts/logout/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"logout",
+						""
+					]
+				},
+				"description": "**Access tokens are short-lived and do not need to be blacklisted, this API will only blacklist the refresh tokens by default. While the user is performing logout, frontend dev need to clear the cache from the frontend**\n\n_Required Fields: refresh token_"
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODYwNTgwMywiaWF0IjoxNjY4NTE5NDAzLCJqdGkiOiIxYmY3MjNjNzRjOWU0MDc3ODcxNzdjYzVhMjE5NjEzYyIsInVzZXJfaWQiOjF9.ZimrXboeN5RRk2wiquNqjLwS9fgKMtouVE_1LalhV5Y\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/logout/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"logout",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 15 Nov 2022 13:36:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"logout\",\n    \"data\": []\n}"
+				}
+			]
+		}
+	]
+}
